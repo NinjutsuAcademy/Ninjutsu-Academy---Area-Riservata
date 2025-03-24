@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Accesso Area Riservata - Ninjutsu Academy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://www.wayofninja.com/wp-content/uploads/2016/03/real-ninjutsu-featured-800.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #B22222;
+            margin-bottom: 25px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .logo {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        input[type="password"], input[type="text"] {
+            padding: 12px;
+            margin: 10px 0;
+            width: 200px;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+
+        .show-password {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #B22222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #8B0000;
+        }
+
+        #error-msg {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh34k4Wfpf_nQEfnrJk6tT3Y3DyHWgotl7DQ&s" alt="Logo Ninjutsu" class="logo">
+        <h1>Area Riservata Abbonati</h1>
+        <p>Inserisci la password per accedere:</p>
+        
+        <input type="password" id="password" placeholder="Password segreta">
+        <br>
+        <div class="show-password">
+            <input type="checkbox" id="showPassword" onclick="togglePassword()">
+            <label for="showPassword">Mostra password</label>
+        </div>
+        
+        <button onclick="checkPassword()">ACCEDI</button>
+        <div id="error-msg">Password errata! Riprova.</div>
+    </div>
+
+    <script>
+        // Funzione per mostrare/nascondere la password
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const showPasswordCheckbox = document.getElementById("showPassword");
+            
+            passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
+        }
+
+        // Funzione di controllo password
+        function checkPassword() {
+            const password = "NINJA2025";
+            const input = document.getElementById("password").value;
+            const errorMsg = document.getElementById("error-msg");
+
+            if(input === password) {
+                window.top.location.href = "https://sites.google.com/view/ninjutsuacademy-area-riservata/home-page";
+            } else {
+                errorMsg.style.display = "block";
+                setTimeout(() => { errorMsg.style.display = "none"; }, 3000);
+            }
+        }
+
+        // Permette di premere INVIO
+        document.getElementById("password").addEventListener("keypress", function(e) {
+            if(e.key === "Enter") checkPassword();
+        });
+    </script>
+</body>
+</html>
